@@ -88,6 +88,7 @@ anims/flock_out = SubResource( 3 )
 [node name="TimerStart" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="exploded" from="FlockController" to="." method="_on_FlockController_exploded"]
 [connection signal="unvalidated" from="FlockObjective" to="." method="_on_FlockObjective_unvalidated"]
 [connection signal="validated" from="FlockObjective" to="." method="_on_FlockObjective_validated"]
 [connection signal="timeout" from="TimerCountDown" to="." method="_on_TimerCountDown_timeout"]

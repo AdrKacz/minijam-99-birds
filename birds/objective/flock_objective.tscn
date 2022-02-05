@@ -5,11 +5,6 @@
 
 [node name="FlockObjective" type="Spatial"]
 script = ExtResource( 1 )
+objective_scene = ExtResource( 2 )
 
 [node name="Flock" type="Spatial" parent="."]
-
-[node name="SpaceshipObjective" parent="Flock" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
-
-[node name="SpaceshipObjective2" parent="Flock" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )

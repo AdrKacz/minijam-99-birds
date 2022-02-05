@@ -5,17 +5,6 @@
 
 [node name="FlockController" type="Spatial"]
 script = ExtResource( 2 )
+spaceship_scene = ExtResource( 1 )
 
 [node name="Flock" type="Spatial" parent="."]
-
-[node name="ActiveSpaceship" parent="Flock" instance=ExtResource( 1 )]
-is_activated = true
-
-[node name="UnactiveSpaceship" parent="Flock" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5 )
-
-[node name="SpacehipController" parent="Flock" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
-
-[node name="SpacehipController2" parent="Flock" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5 )

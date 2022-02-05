@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game-ui/progress-bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game-ui/game-ui.gd" type="Script" id=2]
@@ -38,6 +38,64 @@ tracks/0/keys = {
 "values": [ 64, 16 ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../LevelContainer/CenterContainer/Label:custom_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../LevelContainer/CenterContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "level_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../LevelContainer/CenterContainer/Label:custom_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 16, 16, 48 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../LevelContainer/CenterContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,6 +122,7 @@ margin_right = 128.0
 margin_bottom = 600.0
 
 [node name="CountDownContainer" type="CenterContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -87,3 +146,32 @@ text = "3"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CountDownContainer"]
 anims/RESET = SubResource( 2 )
 anims/count_down = SubResource( 3 )
+
+[node name="LevelContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 200.0
+custom_constants/margin_top = 128
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelContainer"]
+margin_top = 128.0
+margin_right = 1024.0
+margin_bottom = 200.0
+
+[node name="Label" type="Label" parent="LevelContainer/CenterContainer"]
+margin_left = 474.0
+margin_top = 24.0
+margin_right = 550.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "Level 1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelContainer"]
+root_node = NodePath("../../CountDownContainer")
+anims/RESET = SubResource( 5 )
+anims/level_in = SubResource( 6 )
+
+[connection signal="animation_finished" from="LevelContainer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

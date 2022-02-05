@@ -9,7 +9,7 @@ export (float, 1, 10) var max_speed : float = 5
 export (bool) var is_activated : bool = false 
 
 onready var spaceship_mesh : Spatial = $Spaceship
-onready var explosition_timer : Timer = $Explosion
+onready var collision_shape : CollisionShape = $CollisionShape
 
 var direction : Vector3 = Vector3()
 var velocity : Vector3 = Vector3()
@@ -18,16 +18,12 @@ var target_direction_x : float = 0
 var is_exploding : bool = false
 var is_hovered : bool = false
 
-
-func _ready():
-	if is_activated:
-		activate()
-
 func explode() -> void:
+	if is_exploding:
+		return
+	collision_shape.disabled = true
 	is_exploding = true
-	emit_signal("exploded")
-	# Start timer
-	explosition_timer.start()
+	spaceship_mesh.explode()
 	
 func activate() -> void:
 	is_activated = true
@@ -89,9 +85,6 @@ func process_animation() -> void:
 	else:
 		spaceship_mesh.set_rotate_force(0)
 
-func _on_Explosion_timeout() -> void:
-	queue_free()
-
 func _on_CollisionDetector_area_entered(area):
 	explode()
 
@@ -102,3 +95,7 @@ func _on_SelectionDetect_mouse_entered():
 func _on_SelectionDetect_mouse_exited():
 	is_hovered = false
 	spaceship_mesh.selection_marker.hide()
+
+func _on_Spaceship_exploded():
+	emit_signal("exploded")
+	queue_free()

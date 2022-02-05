@@ -26,8 +26,6 @@ shape = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="CollisionDetector"]
 shape = ExtResource( 3 )
 
-[node name="Explosion" type="Timer" parent="."]
-
 [node name="SelectionDetect" type="Area" parent="."]
 collision_layer = 4
 collision_mask = 0
@@ -35,7 +33,7 @@ collision_mask = 0
 [node name="CollisionShape" type="CollisionShape" parent="SelectionDetect"]
 shape = SubResource( 1 )
 
+[connection signal="exploded" from="Spaceship" to="." method="_on_Spaceship_exploded"]
 [connection signal="area_entered" from="CollisionDetector" to="." method="_on_CollisionDetector_area_entered"]
-[connection signal="timeout" from="Explosion" to="." method="_on_Explosion_timeout"]
 [connection signal="mouse_entered" from="SelectionDetect" to="." method="_on_SelectionDetect_mouse_entered"]
 [connection signal="mouse_exited" from="SelectionDetect" to="." method="_on_SelectionDetect_mouse_exited"]

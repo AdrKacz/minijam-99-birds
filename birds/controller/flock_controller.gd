@@ -1,5 +1,9 @@
 extends Spatial
 
+signal exploded
+
+export (PackedScene) var spaceship_scene : PackedScene
+
 export (float, 0, 1) var min_ratio : float = 0
 export (float, 0, 1) var max_ratio : float = 1
 export (float) var min_distance : float = 0
@@ -13,15 +17,26 @@ onready var flock : Spatial = $Flock
 
 onready var b_parameter  : float = (min_ratio - max_ratio) / (max_distance - min_distance) 
 onready var c_parameter : float = (max_distance * max_ratio - min_distance * min_ratio) / (max_distance - min_distance)
-
-func _ready():
-	activated_spaceship = $Flock/ActiveSpaceship
-	for spaceship in flock.get_children():
-		spaceship.connect("exploded", self, "_on_Spaceship_Exploded", [spaceship.get_name()])
-		spaceship.connect("activated", self, "_on_Spaceship_Activated", [spaceship])
 	
 func _physics_process(delta) -> void:
 	process_unactive_spaceships()
+	
+func reset_spaceships() -> void:
+	activated_spaceship = null
+	for spaceship in flock.get_children():
+		flock.remove_child(spaceship)
+		spaceship.queue_free()
+	
+	var is_first : bool = true
+	for spaceship_position in Game.levels[Game.current_level].spaceships:
+		var spaceship : Spatial = spaceship_scene.instance()
+		spaceship.translate(spaceship_position)
+		flock.add_child(spaceship)
+		spaceship.connect("exploded", self, "_on_Spaceship_Exploded", [spaceship.get_name()])
+		spaceship.connect("activated", self, "_on_Spaceship_Activated", [spaceship])
+		if is_first:
+			set_activated_spaceship(spaceship)
+			is_first = false
 	
 func reset_force_spaceships() -> void:
 	if Game.is_gaming: # Don't perturbate game with animation
@@ -56,6 +71,7 @@ func set_activated_spaceship(spaceship : Spatial):
 func _on_Spaceship_Exploded(spaceship_name):
 	if activated_spaceship and spaceship_name == activated_spaceship.get_name():
 		activated_spaceship = null
+	emit_signal("exploded")
 		
 func _on_Spaceship_Activated(spaceship):
 	set_activated_spaceship(spaceship)
