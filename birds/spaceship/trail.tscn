@@ -12,7 +12,7 @@ albedo_texture = ExtResource( 1 )
 material = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.257212, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.745192, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.435096, 0.146971 ), 0.0, 0.0, 0, 0, Vector2( 0.557692, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Trail" type="CPUParticles"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )

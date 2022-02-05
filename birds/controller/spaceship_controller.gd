@@ -38,7 +38,7 @@ func deactivate() -> void:
 	spaceship_mesh.selection_selected.hide()
 
 func _physics_process(delta : float) -> void:
-	if is_exploding:
+	if not Game.is_gaming or is_exploding:
 		return
 	process_boundaries()
 	if is_activated:
@@ -78,6 +78,9 @@ func process_movement(delta : float) -> void:
 	velocity.x = vertical_velocity.x
 	velocity = move_and_slide(velocity)
 	
+func set_rotate_force(value):
+	spaceship_mesh.set_rotate_force(clamp(value, -1, 1))
+	
 func process_animation() -> void:
 	if velocity.x > 0:
 		spaceship_mesh.set_rotate_force(-1)
@@ -86,21 +89,15 @@ func process_animation() -> void:
 	else:
 		spaceship_mesh.set_rotate_force(0)
 
-
 func _on_Explosion_timeout() -> void:
 	queue_free()
 
-
-
 func _on_CollisionDetector_area_entered(area):
-	print('BOUM')
 	explode()
-
 
 func _on_SelectionDetect_mouse_entered():
 	is_hovered = true
 	spaceship_mesh.selection_marker.show()
-
 
 func _on_SelectionDetect_mouse_exited():
 	is_hovered = false

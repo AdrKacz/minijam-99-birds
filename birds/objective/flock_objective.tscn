@@ -1,3 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objective/flock_objective.gd" type="Script" id=1]
+[ext_resource path="res://objective/spaceship-objective.tscn" type="PackedScene" id=2]
 
 [node name="FlockObjective" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Flock" type="Spatial" parent="."]
+
+[node name="SpaceshipObjective" parent="Flock" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
+
+[node name="SpaceshipObjective2" parent="Flock" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )

@@ -13,6 +13,10 @@ config_version=4
 config/name="birds"
 config/icon="res://icon.png"
 
+[autoload]
+
+Game="*res://autoloads/game.gd"
+
 [display]
 
 mouse_cursor/custom_image="res://assets/crosshair007.png"
@@ -34,6 +38,8 @@ select={
 [layer_names]
 
 3d_physics/layer_1="spaceship"
+3d_physics/layer_2="objective"
+3d_physics/layer_3="input"
 
 [physics]
 

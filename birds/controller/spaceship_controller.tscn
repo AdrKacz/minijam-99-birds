@@ -8,7 +8,7 @@
 radius = 3.0
 
 [node name="SpacehipController" type="KinematicBody" groups=["spaceship"]]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 0
 axis_lock_motion_y = true
 axis_lock_motion_z = true
@@ -29,7 +29,7 @@ shape = ExtResource( 3 )
 [node name="Explosion" type="Timer" parent="."]
 
 [node name="SelectionDetect" type="Area" parent="."]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionDetect"]

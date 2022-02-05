@@ -20,10 +20,16 @@ func _ready():
 		spaceship.connect("exploded", self, "_on_Spaceship_Exploded", [spaceship.get_name()])
 		spaceship.connect("activated", self, "_on_Spaceship_Activated", [spaceship])
 	
-func _physics_process(delta):
-	process_unactive_spaceship()
+func _physics_process(delta) -> void:
+	process_unactive_spaceships()
+	
+func reset_force_spaceships() -> void:
+	if Game.is_gaming: # Don't perturbate game with animation
+		return
+	for spaceship in flock.get_children():
+		spaceship.set_rotate_force(0)
 
-func process_unactive_spaceship() -> void:
+func process_unactive_spaceships() -> void:
 	if not activated_spaceship: # To avoid bug
 		return
 	var activated_origin_xz : Vector3 = activated_spaceship.transform.origin
