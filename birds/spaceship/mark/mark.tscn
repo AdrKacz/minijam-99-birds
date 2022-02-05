@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://spaceship/craft_speederC_mark.tscn" type="PackedScene" id=1]
+
+[node name="SpaceshipMark" type="Spatial"]
+
+[node name="craft_speederC" parent="." instance=ExtResource( 1 )]

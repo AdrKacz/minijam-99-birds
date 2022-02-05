@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://environment/terrains/terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://environment/environment.gd" type="Script" id=2]
+[ext_resource path="res://environment/rocks/rock_A.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/rocks/rock_largeB.tscn" type="PackedScene" id=4]
+[ext_resource path="res://environment/rocks/rockB.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[node name="Environment" type="Spatial"]
+script = ExtResource( 2 )
+terrain_scene = ExtResource( 1 )
+rock_scenes = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.939693, 0.116978, -0.321394, 0, 0.939692, 0.34202, 0.34202, -0.321394, 0.883022, 0, 10, 0 )
+light_color = Color( 0.909804, 0.521569, 0.34902, 1 )
+shadow_enabled = true
+
+[node name="GroundA" type="Spatial" parent="."]
+
+[node name="GroundB" type="Spatial" parent="."]
