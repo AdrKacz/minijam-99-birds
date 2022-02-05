@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/musicOff.png" type="Texture" id=1]
+[ext_resource path="res://assets/musicOn.png" type="Texture" id=2]
+[ext_resource path="res://general-ui/sound-container.gd" type="Script" id=3]
+
+[node name="SoundContainer" type="MarginContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -82.0
+margin_bottom = 82.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnContainer" type="CenterContainer" parent="."]
+margin_top = 32.0
+margin_right = 50.0
+margin_bottom = 82.0
+
+[node name="OnButton" type="TextureButton" parent="OnContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+
+[node name="OffContainer" type="CenterContainer" parent="."]
+margin_top = 32.0
+margin_right = 50.0
+margin_bottom = 82.0
+
+[node name="OffButton" type="TextureButton" parent="OffContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 1 )
+
+[connection signal="pressed" from="OnContainer/OnButton" to="." method="_on_OnButton_pressed"]
+[connection signal="pressed" from="OffContainer/OffButton" to="." method="_on_OffButton_pressed"]

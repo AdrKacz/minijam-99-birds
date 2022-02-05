@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game-ui/progress-bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game-ui/game-ui.gd" type="Script" id=2]
 [ext_resource path="res://assets/Kenney Blocks.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://general-ui/sound-container.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -173,5 +174,7 @@ text = "Level 1"
 root_node = NodePath("../../CountDownContainer")
 anims/RESET = SubResource( 5 )
 anims/level_in = SubResource( 6 )
+
+[node name="SoundContainer" parent="." instance=ExtResource( 4 )]
 
 [connection signal="animation_finished" from="LevelContainer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

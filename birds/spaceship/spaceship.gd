@@ -13,6 +13,10 @@ var rotate_angle_target_radians : float = 0
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var selection_marker : Spatial = $Inner/Marker
 onready var selection_selected : Spatial = $Inner/Selected
+
+onready var audio_explosion : AudioStreamPlayer3D = $AudioExplosion
+onready var audio_engine : AudioStreamPlayer3D = $AudioEngine
+
 onready var epsilon_radians : float = deg2rad(epsilon_degrees)
 
 func set_rotate_force(new_rotate_force : float) -> void:
@@ -24,6 +28,8 @@ func _process(delta : float) -> void:
 	var delta_rotation : float = abs(rotation.z - rotate_angle_target_radians)
 	if delta_rotation > epsilon_radians:
 		rotation.z = lerp_angle(rotation.z, rotate_angle_target_radians, delta * rotation_speed)
+	if global_transform.origin.z < -20 and audio_engine.playing:
+		audio_engine.stop()
 		
 func explode() -> void:
 	animation_player.play("explode")

@@ -16,6 +16,10 @@ onready var flock_controller : Spatial = $FlockController
 onready var flock_objective : Spatial = $FlockObjective
 onready var flock_animation_player : AnimationPlayer = $FlockAnimation
 
+onready var audio_stream_level_up : AudioStreamPlayer = $AudioStreamLevelUp
+onready var audio_stream_charging : AudioStreamPlayer = $AudioStreamCharging
+
+
 func _ready():
 	start_level()
 	
@@ -43,6 +47,7 @@ func end_level() -> void:
 func validate_level() -> void:
 	end_level()
 	Game.current_level += 1
+	audio_stream_level_up.play()
 	emit_signal("validated")
 	
 func flock_in():
@@ -60,14 +65,25 @@ func count_down() -> void:
 		game_ui.hide_count_down()
 		Game.is_gaming = true
 		emit_signal("started")
+		
+func play_audio_charging() -> void:
+	if not audio_stream_charging.playing:
+		audio_stream_charging.play()
+		
+func stop_audio_charging() -> void:
+	if audio_stream_charging.playing and audio_stream_charging.get_playback_position() > 0.8:
+		audio_stream_charging.stop()
 
 func _process(delta):
 	if not Game.is_gaming:
+		stop_audio_charging()
 		return
 	if is_validated:
 		level_time += delta
+		play_audio_charging()
 	else:
 		level_time -= delta
+		stop_audio_charging()
 	game_ui.progress = 1 + level_time / max_level_time * 99 # progress between 1 and 100
 	if level_time > max_level_time:
 		validate_level()
