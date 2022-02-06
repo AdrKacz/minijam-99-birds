@@ -195,6 +195,7 @@ emitting = false
 amount = 32
 one_shot = true
 explosiveness = 1.0
+local_coords = false
 mesh = SubResource( 7 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )

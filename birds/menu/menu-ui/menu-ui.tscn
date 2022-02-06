@@ -91,7 +91,6 @@ text = "Option"
 flat = true
 
 [node name="SoundContainer" parent="." instance=ExtResource( 3 )]
-custom_constants/margin_bottom = 0
 
 [node name="LevelUI" parent="." instance=ExtResource( 5 )]
 visible = false

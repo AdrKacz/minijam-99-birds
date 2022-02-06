@@ -5,21 +5,21 @@
 [ext_resource path="res://general-ui/sound-container.gd" type="Script" id=3]
 
 [node name="SoundContainer" type="MarginContainer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -82.0
-margin_bottom = 82.0
-custom_constants/margin_right = 32
-custom_constants/margin_top = 32
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -82.0
+margin_right = 82.0
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OnContainer" type="CenterContainer" parent="."]
-margin_top = 32.0
-margin_right = 50.0
-margin_bottom = 82.0
+margin_left = 32.0
+margin_right = 82.0
+margin_bottom = 50.0
 
 [node name="OnButton" type="TextureButton" parent="OnContainer"]
 margin_right = 50.0
@@ -28,9 +28,9 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 2 )
 
 [node name="OffContainer" type="CenterContainer" parent="."]
-margin_top = 32.0
-margin_right = 50.0
-margin_bottom = 82.0
+margin_left = 32.0
+margin_right = 82.0
+margin_bottom = 50.0
 
 [node name="OffButton" type="TextureButton" parent="OffContainer"]
 margin_right = 50.0
