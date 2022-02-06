@@ -51,7 +51,7 @@ func end_level() -> void:
 func validate_level() -> void:
 	end_level()
 	Game.current_level += 1
-	Game.level_max_succeeded = max(Game.current_level, Game.level_max_succeeded)
+	Game.level_max_succeeded = max(Game.current_level + 1, Game.level_max_succeeded)
 	audio_stream_level_up.play()
 	emit_signal("validated")
 	

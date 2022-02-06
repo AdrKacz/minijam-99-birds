@@ -231,25 +231,25 @@ anims/level_in = SubResource( 6 )
 [node name="HelpContainer" type="MarginContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -344.0
+margin_left = -364.0
+margin_bottom = 120.0
 mouse_filter = 2
-custom_constants/margin_right = 128
-custom_constants/margin_bottom = 384
+custom_constants/margin_right = 256
+custom_constants/margin_top = 96
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="HelpContainer"]
-margin_right = 216.0
-margin_bottom = 216.0
+margin_top = 96.0
+margin_right = 108.0
+margin_bottom = 120.0
 mouse_filter = 2
+size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="HelpContainer/CenterContainer"]
-margin_left = 54.0
-margin_top = 96.0
-margin_right = 162.0
-margin_bottom = 120.0
+margin_right = 108.0
+margin_bottom = 24.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 custom_fonts/font = SubResource( 7 )
 text = "Hello you!"

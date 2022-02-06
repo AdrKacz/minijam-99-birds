@@ -17,7 +17,7 @@ func _ready() -> void:
 	ground_B.transform.origin.z = ground_A.transform.origin.z - width
 	generate_environment(ground_A)
 	generate_environment(ground_B)
-	
+
 func clear_environment(ground : Spatial) -> void:
 	for node in ground.get_children():
 		ground.remove_child(node)

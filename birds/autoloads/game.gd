@@ -8,7 +8,7 @@ func pause_game(is_paused : bool):
 var is_gaming : bool = false
 
 var current_level : int = 0
-var level_max_succeeded : int = 0
+var level_max_succeeded : int = 1
 
 # First spaceship is the active one
 const levels : Array = [
@@ -124,6 +124,8 @@ const levels : Array = [
 			Vector3(6, 0, 5),
 			Vector3(-6, 0, 10),
 			Vector3(2, 0, 10),
+			Vector3(0, 0, 15),
+			Vector3(4, 0, 15),
 		],
 		"objectives": [
 			Vector3(0, 0, 0),
@@ -132,6 +134,8 @@ const levels : Array = [
 			Vector3(4, 0, 10),
 			Vector3(0, 0, 10),
 			Vector3(-4, 0, 10),
+			Vector3(-6, 0, 15),
+			Vector3(6, 0, 15),
 		],
 		"help": "Here's your flock\nfor tomorrow\n\nYou proved you can do it\nGood luck master!"
 	},

@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menu/menu-ui/small-font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Kenney Blocks.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu/menu-ui/level-button-font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://menu/menu-ui/option-ui.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="OptionUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 96.0
+mouse_filter = 2
+custom_constants/margin_top = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="LabelContainer"]
+margin_top = 32.0
+margin_right = 1024.0
+margin_bottom = 210.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LabelContainer/CenterContainer"]
+margin_left = 272.0
+margin_right = 752.0
+margin_bottom = 178.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="LabelContainer/CenterContainer/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 1 )
+text = "Option"
+align = 1
+
+[node name="MenuButton" type="Button" parent="LabelContainer/CenterContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 480.0
+margin_bottom = 178.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Return to menu"
+flat = true
+
+[node name="ButtonContainer" type="MarginContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -8.0
+margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ButtonContainer"]
+margin_right = 1024.0
+margin_bottom = 78.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonContainer/CenterContainer"]
+margin_left = 86.0
+margin_right = 938.0
+margin_bottom = 78.0
+
+[node name="MusicButton" type="Button" parent="ButtonContainer/CenterContainer/VBoxContainer"]
+margin_right = 852.0
+margin_bottom = 78.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 3 )
+text = "Turn off music background"
+flat = true
+
+[connection signal="pressed" from="LabelContainer/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/CenterContainer/VBoxContainer/MusicButton" to="." method="_on_MusicButton_pressed"]

@@ -2,6 +2,7 @@ extends Control
 
 const game_scene_path : String = "res://game/game.tscn"
 
+onready var option_ui : Control = $OptionUI
 onready var level_ui : Control = $LevelUI
 onready var title_container : MarginContainer = $TitleContainer
 onready var button_container : MarginContainer = $ButtonContainer
@@ -27,5 +28,17 @@ func _on_LevelUI_goto_level(level):
 
 func _on_LevelUI_return_to_menu():
 	level_ui.hide()
+	title_container.show()
+	button_container.show()
+
+
+func _on_OptionButton_pressed():
+	title_container.hide()
+	button_container.hide()
+	option_ui.show()
+
+
+func _on_OptionUI_return_to_menu():
+	option_ui.hide()
 	title_container.show()
 	button_container.show()

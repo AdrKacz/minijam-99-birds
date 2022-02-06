@@ -19,11 +19,14 @@ config/icon="res://icon.png"
 Scene="*res://autoloads/scene.gd"
 Game="*res://autoloads/game.gd"
 Sound="*res://autoloads/sound.gd"
+AudioStreamMain="*res://autoloads/audio-stream-main.tscn"
 
 [display]
 
 mouse_cursor/custom_image="res://assets/crosshair007.png"
 mouse_cursor/custom_image_hotspot=Vector2( 32, 32 )
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [input]
 

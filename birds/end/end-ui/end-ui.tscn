@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Kenney Blocks.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://general-ui/sound-container.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -34,15 +38,28 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="EndContainer"]
 margin_top = 64.0
 margin_right = 1024.0
-margin_bottom = 160.0
+margin_bottom = 211.0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="EndContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EndContainer/CenterContainer"]
 margin_left = 40.0
 margin_right = 984.0
+margin_bottom = 147.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="EndContainer/CenterContainer/VBoxContainer"]
+margin_right = 944.0
 margin_bottom = 96.0
 custom_fonts/font = SubResource( 1 )
 text = "Thank you for playing!"
+
+[node name="Label2" type="Label" parent="EndContainer/CenterContainer/VBoxContainer"]
+margin_top = 111.0
+margin_right = 944.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 3 )
+text = "Weel done Flock Master! The Queen will love you"
+align = 1
 
 [node name="ButtonContainer" type="MarginContainer" parent="."]
 anchor_top = 0.5
