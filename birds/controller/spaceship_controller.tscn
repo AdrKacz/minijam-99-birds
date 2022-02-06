@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://spaceship/spaceship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://controller/spaceship_controller.gd" type="Script" id=2]
@@ -7,8 +7,11 @@
 [sub_resource type="SphereShape" id=1]
 radius = 3.0
 
+[sub_resource type="SphereShape" id=2]
+radius = 0.5
+
 [node name="SpacehipController" type="KinematicBody" groups=["spaceship"]]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 0
 axis_lock_motion_y = true
 axis_lock_motion_z = true
@@ -32,6 +35,13 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="SelectionDetect"]
 shape = SubResource( 1 )
+
+[node name="ObjectiveDetector" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="ObjectiveDetector"]
+shape = SubResource( 2 )
 
 [connection signal="exploded" from="Spaceship" to="." method="_on_Spaceship_exploded"]
 [connection signal="area_entered" from="CollisionDetector" to="." method="_on_CollisionDetector_area_entered"]

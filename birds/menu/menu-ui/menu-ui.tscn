@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Kenney Blocks.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menu/menu-ui/small-font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://general-ui/sound-container.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/menu-ui/menu-ui.gd" type="Script" id=4]
+[ext_resource path="res://menu/menu-ui/level-ui.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -76,7 +77,6 @@ margin_right = 420.0
 margin_bottom = 184.0
 mouse_default_cursor_shape = 2
 custom_fonts/font = ExtResource( 2 )
-disabled = true
 text = "Select level"
 flat = true
 
@@ -93,4 +93,10 @@ flat = true
 [node name="SoundContainer" parent="." instance=ExtResource( 3 )]
 custom_constants/margin_bottom = 0
 
+[node name="LevelUI" parent="." instance=ExtResource( 5 )]
+visible = false
+
 [connection signal="pressed" from="ButtonContainer/CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/CenterContainer/VBoxContainer/LevelButton" to="." method="_on_LevelButton_pressed"]
+[connection signal="goto_level" from="LevelUI" to="." method="_on_LevelUI_goto_level"]
+[connection signal="return_to_menu" from="LevelUI" to="." method="_on_LevelUI_return_to_menu"]

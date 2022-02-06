@@ -99,7 +99,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=7]
-size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=8]
@@ -234,20 +233,23 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -344.0
+mouse_filter = 2
 custom_constants/margin_right = 128
-custom_constants/margin_bottom = 256
+custom_constants/margin_bottom = 384
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="HelpContainer"]
 margin_right = 216.0
-margin_bottom = 344.0
+margin_bottom = 216.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="HelpContainer/CenterContainer"]
-margin_top = 148.0
-margin_right = 216.0
-margin_bottom = 196.0
+margin_left = 54.0
+margin_top = 96.0
+margin_right = 162.0
+margin_bottom = 120.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 custom_fonts/font = SubResource( 7 )
 text = "Hello you!"

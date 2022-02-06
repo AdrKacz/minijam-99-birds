@@ -3,8 +3,9 @@ extends Spatial
 signal validated
 signal unvalidated
 
-func _on_ValidatedArea_body_entered(body):
+func _on_ValidatedArea_area_entered(area):
 	emit_signal("validated")
 
-func _on_ValidatedArea_body_exited(body):
+
+func _on_ValidatedArea_area_exited(area):
 	emit_signal("unvalidated")
