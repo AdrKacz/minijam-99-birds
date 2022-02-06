@@ -3,6 +3,8 @@ extends Spatial
 signal validated
 signal started
 
+const end_scene_path : String = "res://end/end.tscn"
+
 export (float, 1, 5) var max_level_time : float = 3
 
 var count_down_value : int = 3
@@ -24,6 +26,7 @@ func _ready():
 	start_level()
 	
 func start_level() -> void:
+	flock_controller.transform.origin.z = 20
 	flock_controller.reset_spaceships()
 	flock_objective.reset_objectives()
 	level_time = 0
@@ -35,7 +38,7 @@ func start_level() -> void:
 func continue_start_level() -> void:
 	flock_in()
 	flock_objective.show()
-	game_ui.set_level(Game.current_level + 1)
+	game_ui.set_level(Game.current_level + 1, Game.levels[Game.current_level].help)
 	count_down()
 	
 func end_level() -> void:
@@ -43,6 +46,7 @@ func end_level() -> void:
 	flock_controller.reset_force_spaceships()
 	flock_out()
 	flock_objective.hide()
+	game_ui.help_disappears()
 
 func validate_level() -> void:
 	end_level()
@@ -97,7 +101,10 @@ func _on_FlockObjective_unvalidated() -> void:
 
 func _on_FlockAnimation_animation_finished(anim_name):
 	if anim_name == "flock_out":
-		start_level()
+		if Game.current_level == Game.levels.size():
+			Scene.goto_scene(end_scene_path)
+		else:
+			start_level()
 
 
 func _on_TimerCountDown_timeout():

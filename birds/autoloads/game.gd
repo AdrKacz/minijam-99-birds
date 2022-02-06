@@ -1,5 +1,10 @@
 extends Node
 
+var is_paused : bool = false
+
+func pause_game(is_paused : bool):
+	get_tree().paused = is_paused
+	
 var is_gaming : bool = false
 
 var current_level : int = 0
@@ -9,12 +14,11 @@ const levels : Array = [
 	{
 		"spaceships": [
 			Vector3(0, 0, 0),
-			Vector3(0, 0, 5),
 		],
 		"objectives": [
-			Vector3(5, 0, 0),
-			Vector3(-5, 0, 5),
-		]
+			Vector3(0, 0, 0),
+		],
+		"help": "Use your space bar"
 	},
 	{
 		"spaceships": [
@@ -22,7 +26,8 @@ const levels : Array = [
 		],
 		"objectives": [
 			Vector3(0, 0, 0)
-		]
+		],
+		"help": ""
 	},
 	{
 		"spaceships": [
@@ -30,7 +35,8 @@ const levels : Array = [
 		],
 		"objectives": [
 			Vector3(5, 0, 0)
-		]
+		],
+		"help": ""
 	},
 ]
 

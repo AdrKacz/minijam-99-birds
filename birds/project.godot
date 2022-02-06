@@ -11,10 +11,12 @@ config_version=4
 [application]
 
 config/name="birds"
+run/main_scene="res://menu/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+Scene="*res://autoloads/scene.gd"
 Game="*res://autoloads/game.gd"
 Sound="*res://autoloads/sound.gd"
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://environment/environment.tscn" type="PackedScene" id=3]
 [ext_resource path="res://spaceship/mark/mark.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objective/flock_objective.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game-ui/game-ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/game-ui/game-ui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sound-effects/zapThreeToneUp.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/sound-effects/forceField_001.ogg" type="AudioStream" id=8]
 
@@ -57,12 +57,6 @@ tracks/0/keys = {
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 10, 0 )
-projection = 1
-current = true
-size = 20.0
 
 [node name="Environment" parent="." instance=ExtResource( 3 )]
 

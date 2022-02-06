@@ -28,8 +28,8 @@ func _process(delta : float) -> void:
 	var delta_rotation : float = abs(rotation.z - rotate_angle_target_radians)
 	if delta_rotation > epsilon_radians:
 		rotation.z = lerp_angle(rotation.z, rotate_angle_target_radians, delta * rotation_speed)
-	if global_transform.origin.z < -20 and audio_engine.playing:
-		audio_engine.stop()
+#	if global_transform.origin.z < -20 and audio_engine.playing:
+#		audio_engine.stop()
 		
 func explode() -> void:
 	animation_player.play("explode")
